@@ -19,6 +19,14 @@ This project implements a **Retrieval-Augmented Generation (RAG)** system that e
 ## 🏗️ Architecture
 
 ```
+User Input (URL / PDF / CSV / DOCX)
+   ↓
+Ingestion Pipeline
+   ↓
+Chunking + Embedding
+   ↓
+Qdrant Vector Database
+   ↓
 User Query
    ↓
 Embedding Model
@@ -59,10 +67,10 @@ cd multi-source-rag
 pip install -r requirements.txt
 ```
 
-### 3. Set API Key
+### 3. Set API Key in .env
 
 ```bash
-export GOOGLE_API_KEY=your_api_key
+GOOGLE_API_KEY=your_api_key
 ```
 
 ---
@@ -81,17 +89,31 @@ docker run -d \
 
 ---
 
-### 5. (Optional) Start Inngest for Monitoring
+### 5. Start Backend
+Before running the app or Inngest, you must start the backend service:
+
+```bash
+uv run uvicorn main:app
+```
+
+---
+
+### 6. (Optional) Start Inngest for Monitoring
 
 Inngest is used to monitor ingestion jobs and debug processing status.
 
 ```bash
 npx inngest-cli@latest dev -u http://127.0.0.1:8000/api/inngest --no-discovery
 ```
+Access the Inngest dashboard to:
+
+- 📊 Track ingestion progress  
+- 🐞 Debug failures  
+- 🔄 Observe workflow execution  
 
 ---
 
-### 6. Run Application
+### 7. Run Application
 
 ```bash
 uv run streamlit run ./streamlit_app.py
