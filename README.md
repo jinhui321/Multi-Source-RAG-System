@@ -4,6 +4,7 @@
 
 This project implements a **Retrieval-Augmented Generation (RAG)** system that enables context-aware question answering across multiple document sources. It combines semantic search with large language models to generate more accurate, relevant, and grounded responses.
 
+![Architecture Diagram](assets/images/RAG_UI.png)
 ---
 
 ## ✨ Features
@@ -107,9 +108,14 @@ npx inngest-cli@latest dev -u http://127.0.0.1:8000/api/inngest --no-discovery
 ```
 Access the Inngest dashboard to:
 
-- 📊 Track ingestion progress  
-- 🐞 Debug failures  
-- 🔄 Observe workflow execution  
+- Track ingestion progress  
+- Debug failures  
+- Observe workflow execution
+
+<p align="center">
+  <img src="assets/images/Inngest_Server_Ingest_Source.png" width="45%" />
+  <img src="assets/images/Inngest_Server_Track_Query.png" width="45%" />
+</p>
 
 ---
 
@@ -123,11 +129,20 @@ uv run streamlit run ./streamlit_app.py
 
 ## 💡 Example Use Case
 
-Upload documents and ask questions such as:
+1. Upload documents
+<p align="center">
+  <img src="assets/images/RAG_Ingest_doc.png" width="600"/>
+</p>
+
+2. Ask questions such as:
 
 > “What are the key insights from this document?”
 
 The system retrieves relevant context and generates a grounded response using retrieved knowledge.
+
+<p align="center">
+  <img src="assets/images/RAG_Answer.png" width="600"/>
+</p>
 
 ---
 
